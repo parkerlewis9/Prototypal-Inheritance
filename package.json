@@ -1,0 +1,26 @@
+{
+  "name": "prototypical-inheritance",
+  "version": "1.0.0",
+  "description": "# License Prototypal Inheritance is released under the [MIT License](https://opensource.org/licenses/MIT)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkerlewis9/Prototypal-Inheritance.git"
+  },
+  "author": "Parker Lewis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parkerlewis9/Prototypal-Inheritance/issues"
+  },
+  "homepage": "https://github.com/parkerlewis9/Prototypal-Inheritance#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
