@@ -12,18 +12,18 @@ describe("Prototypal Inheritance", function(){
 
 	describe("#ParentClass", function(){
 
-		xdescribe("Characteristics of an instance", function(){
+		describe("Characteristics of an instance", function(){
 
 			it("should exhit the expected behavior of an instance of a parent class", function(){
-				expect(parent.nameOfClass).to.equal("SoftwareEngineer");
-				expect(parent.name).to.equal("Madolyn Snyder");
-				expect(parent.age).to.equal(32);
+				expect(parent.nameOfClass).to.equal("Person");
+				expect(parent.name).to.equal("McKenzie Mint");
+				expect(parent.age).to.equal(34);
 
-				expect(parent.sayHi()).to.equal("Hi, I'm Madolyn Snyder and I am 32 years old.");
+				expect(parent.sayHi()).to.equal("Hi, I'm McKenzie Mint and I am 34 years old.");
 				expect(parent.sayBye()).to.equal("Bye for now!");
 				
 				expect(parent.skills).to.be.undefined;
-				expect(parent.introduceSelf).to.throw("TypeError", /not a function/)	
+				expect(parent.introduceSelf).to.be.undefined;	
 			});
 
 			it("should hold its instance properties", function(){
@@ -40,7 +40,7 @@ describe("Prototypal Inheritance", function(){
 
 		});
 
-		xdescribe("Characteristics of the constructor function's prototype", function(){
+		describe("Characteristics of the constructor function's prototype", function(){
 
 			it("should hold methods intented to be inherited directly by all instances of the constructor", function(){
 				expect(ChildClass.prototype.hasOwnProperty("introduceSelf")).to.be.true;
@@ -56,7 +56,7 @@ describe("Prototypal Inheritance", function(){
 
 	describe("#ChildClass", function(){
 
-		xdescribe("Characteristics of an instance", function(){
+		describe("Characteristics of an instance", function(){
 
 			it("should exhit the expected behavior of an instance of a child class", function(){
 				expect(child.nameOfClass).to.equal("SoftwareEngineer");
@@ -67,7 +67,7 @@ describe("Prototypal Inheritance", function(){
 				expect(child.sayBye()).to.equal("Bye for now!");
 
 				expect(child.skills).to.deep.equal(["JavaScript", "Python"]);
-				expect(child.introduceSelf()).to.equal("Hello, my name is Madolyn Snyder, I am 32 years old, and my interests are 'JavaScript and Python.");
+				expect(child.introduceSelf()).to.equal("Hello, my name is Madolyn Snyder, I am 32 years old, and my interests are JavaScript and Python.");
 			});
 
 			it("should hold its instance properties", function(){
@@ -85,7 +85,7 @@ describe("Prototypal Inheritance", function(){
 
 		})
 
-		xdescribe("Characteristics of the constructor function's prototype", function(){
+		describe("Characteristics of the constructor function's prototype", function(){
 
 			it("should hold methods intented to be inherited directly by all instances of the constructor", function(){
 				expect(ChildClass.prototype.hasOwnProperty("introduceSelf")).to.be.true;
@@ -101,7 +101,7 @@ describe("Prototypal Inheritance", function(){
 
 	});
 
-	xdescribe("Proof that the prototype chain is established", function(){
+	describe("Proof that the prototype chain is established", function(){
 		const liona = new ChildClass("Artist", "Liona Larson", 26, ["photography", "painting", "Photoshop"]);
 
 		child_class_prototype = liona.__proto__
@@ -137,5 +137,3 @@ describe("Prototypal Inheritance", function(){
 
 	
 });
-
-// have the stuff that really shows the underpinnings as separate
