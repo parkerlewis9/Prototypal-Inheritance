@@ -1,0 +1,5 @@
+childTwo = new ChildClass("Artist", "Liona Larson", 26, ["photography", "painting", "Photoshop"]);
+
+before is used instead of beforeEach to impress the point that these objects are made in memory and we are examining the same exact (down to the bit and byte level) objects.
+
+// The lookup done by .hasOwnProperty does not traverse down prototype chain
