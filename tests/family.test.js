@@ -8,7 +8,7 @@ describe("Prototypal Inheritance", function(){
 	before(function(){
 		parent = new ParentClass("Person", "McKenzie Mint", 34);
 		child = new ChildClass("SoftwareEngineer", "Madolyn Snyder", 32, ["JavaScript", "Python"]);
-	})
+	});
 
 	describe("#ParentClass", function(){
 
@@ -42,14 +42,10 @@ describe("Prototypal Inheritance", function(){
 
 		describe("Characteristics of the constructor function's prototype", function(){
 
-			it("should hold methods intented to be inherited directly by all instances of the constructor", function(){
-				expect(ChildClass.prototype.hasOwnProperty("introduceSelf")).to.be.true;
+			it("should hold properties inherted to be inherited by instances", function(){
+				expect(ParentClass.prototype.hasOwnProperty("sayHi")).to.be.true;
+				expect(ParentClass.prototype.hasOwnProperty("sayBye")).to.be.true;
 			});
-
-			it("should not hold properties inherted from the parent class", function(){
-				expect(ChildClass.prototype.hasOwnProperty("sayHi")).to.be.false;
-				expect(ChildClass.prototype.hasOwnProperty("sayBye")).to.be.false;
-			})
 
 		});
 	});
@@ -83,7 +79,7 @@ describe("Prototypal Inheritance", function(){
 				expect(child.hasOwnProperty("introduceSelf")).to.be.false;
 			});
 
-		})
+		});
 
 		describe("Characteristics of the constructor function's prototype", function(){
 
@@ -94,7 +90,7 @@ describe("Prototypal Inheritance", function(){
 			it("should not hold properties inherted from the parent class", function(){
 				expect(ChildClass.prototype.hasOwnProperty("sayHi")).to.be.false;
 				expect(ChildClass.prototype.hasOwnProperty("sayBye")).to.be.false;
-			})
+			});
 
 		});
 
@@ -102,6 +98,7 @@ describe("Prototypal Inheritance", function(){
 	});
 
 	describe("Proof that the prototype chain is established", function(){
+
 		const liona = new ChildClass("Artist", "Liona Larson", 26, ["photography", "painting", "Photoshop"]);
 
 		child_class_prototype = liona.__proto__
@@ -133,7 +130,7 @@ describe("Prototypal Inheritance", function(){
 
 			expect(termination).to.deep.equal( null );
 		});
-	})
 
+	});
 	
 });
