@@ -28,7 +28,7 @@ var obj = {
 	"z": 26,
 	...
 	"__proto__": -------------------
-}									|
+};									|
 									v
 
 Object.prototype  ===  	{	
@@ -59,7 +59,7 @@ Banana.prototype.getColor = function getColor() {
 	if (age < 2)  return "green";
 	else if (age < 4) return "yellow";
 	else return "brown";
-}
+};
 
 var b = new Banana("Costa Rica", 3);
 
@@ -69,7 +69,7 @@ b === {
 	"origin": "Costa Rica",
 	"age": 3,
 	"__proto__": -------------------
-}									|
+};									|
 									v
 
 Banana.prototype  ===  	{	
@@ -82,23 +82,65 @@ Banana.prototype  ===  	{
 
 ```
 
+##Object.create
+
+JavaScript comes with a way to allow us to do prototype plumbing relatively easily. By prototype plumbing we mean repointing of the .\_\_proto\_\_ property. Object.create will create an empty object *whose .\_\_proto\_\_ property will point to the whatever object is passed to it*. Said another way, Object.create allows us to set up the prototype chain of an object.
+
+
+```
+- Object.create -
+
+var tinkering = {
+	"tinker": "tailor",
+	"soldier": "spy"
+}
+
+var emptyButPlumbed = Object.create(tinkering);
+
+emptyButPlumbed === {
+
+	"__proto__": -------------------
+};									|
+									v
+
+	tinkering  ===  	{	
+							"soldier": "spy",
+							"tinker": "tailor",
+							"__proto__": -------------------
+						}									|
+															v
+													Object.prototype
+
+```
 
 
 ##Achieving Inheritance
 
 JavaScript natively implements inheritance in its objects through use of the `new` keyword and the prototype chain. We can achieve inheritance from our own classes by inserting other prototypes into the prototype chain of our objects.
 
-In order to do that, our work is clear. The .\_\_proto\_\_ property of our instance, __inst__, will point to the .prototype property of its constructor, ChildClass, when the `new` keyword is used to create it. We cannot change that. Our job is to make it such that that object (ChildClass.prototype)  has a .\_\_proto\_\_ property which points to an object that is the prototype of the class we want to inherit from (ParentClass.prototype). That way, with ParentClass.prototype in __inst__’s  chain, the properties we want to inherit will also be checked when the chain is traversed. Therefore, __inst__ will have inherited from ParentClass because ParentClass.prototype is on __inst__’s prototype chain.
+All we have to do is use Object.create to make us a new empty object with its .\_\_proto\_\_ property pointing to the prototype of the parent class we want to inherit from. Then we set the child class' .prototype property equal this new object. The `new` keyword will take care of the rest of the plumbing. And the prototype chain will ensure that properties properly search all inherited class' prototypes.
 
-##Object.create
+Study the code in [/src][1]. The file [/src/classes/family.js][2] shows the code for implementing complete inheritance. The tests in [/src/tests/family.test.js][3] prove that the code implements inheritance.
 
-JavaScript comes with a way to allow us to do this prototype tampering, I mean, inheritance relatively easily. Object.create will create an empty object *whose .\_\_proto\_\_ property will point to the whatever object is passed to it*. Said another way, Object.create allows us to set up the prototype chain of an object.
+>As you will see, we also reset the .constructor property of that new prototype and use the `.call`  function. Neither will be discussed here. Suffice to say, they allow objects to more fully inherit. But, the inheritance we have achieved is enough of a load to discuss for now and that will be for another time.
 
-All we do is point the .prototype property of the child class constructor to a new empty with it’s .\_\_proto\_\_ property pointing to the prototype of the parent class by using Object.create.
+***
 
-— code goes here —
+###Sources
 
-As you can see, we also reset the .constructor property of that new prototype and use the function .call. Neither will be discussed here. Suffice to say, they more allow objects to more fully inherit. But, the inheritance we have achieved is enough of a load to discuss for now and that will be for another time.
+[Inheritance and the prototype chain - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+
+[new operator - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
+
+[Object.create() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+
+***
 
 # License
+
 Prototypal Inheritance is released under the [MIT License](https://opensource.org/licenses/MIT)
+
+
+[1]: ./src/classes
+[2]: ./src/classes/family.js
+[3]: ./src/tests/family.test.js
