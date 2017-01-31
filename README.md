@@ -8,20 +8,81 @@ Different programming languages implement inheritance in different ways. JavaScr
 
 While until recently JavaScript hadn’t the notion of a “class”, we will use the term class when referring to JavaScript’s constructor function pattern. That is, the creation of instances through use of the `new` keyword and constructor functions. 
 
-##The Prototype Chain and The `new` Keyword
+##The Prototype Chain
 
 The prototype chain is characterized by the behavior JavaScript exhibits when searching for properties on objects. 
 
 When searching for the property “foo” on an object __obj__, JavaScript first looks at all the properties on the object itself. If “foo” cannot be found, it will then look for “foo” on the memory reference found in the .\_\_proto\_\_ property of __obj__. 
 
-That memory reference, known as an object’s prototype, will natively point to JavaScript’s __Object.prototype__ object. Javascript will then look on the __Object.prototype__ for the property “foo”. Not finding that to be a property of __Object.prototype__, JavaScript will traverse down the prototype chain again by looking to the prototype of __Object.prototype__. (that being the object to which it’s .\_\_proto\_\_ property points). The native behavior of JavaScript is such that __Object.prototype__’s .\_\_proto\_\_ property points to `null`. 
+That memory reference, known as an object’s prototype, will natively point to JavaScript’s __Object.prototype__ object. Javascript will then look on __Object.prototype__ for the property “foo”. Not finding that to be a property of __Object.prototype__, JavaScript will traverse down the prototype chain again by looking to the prototype of __Object.prototype__. (that being the object to which it’s .\_\_proto\_\_ property points). The native behavior of JavaScript is such that __Object.prototype__’s .\_\_proto\_\_ property points to `null`. 
 
 When trying to traverse down the chain, if JavaScript finds `null` it knows the property is nowhere to be found on the original object __obj__, nor any of the objects in it’s prototype chain. `undefined` is then returned. 
 
-The functionality of the `new` keyword when used with a constructor function natively sets up this prototype chain for us and gives us a view into how to achieve inheritance in JavaScript. The characteristic of interest of the `new` keyword is it’s setting of the .\_\_proto\_\_ property. When using the `new` keyword, the new object being created’s .\_\_proto\_\_ property is set to point to the .prototype property of it’s constructor function. This allows the prototype chain to do its work as stated above.
+
+```
+- Prototype Chain --
+
+var obj = {
+	"a": 1,
+	"b": 2,
+	"z": 26,
+	...
+	"__proto__": -------------------
+}									|
+									v
+
+Object.prototype  ===  	{	
+							"constructor": Object,
+							"hasOwnProperty": hasOwnProperty,
+							...
+							"toString": toString,
+							"__proto__": null
+						}
+				
+
+```
 
 
-— code goes here —
+##The `new` Keyword
+
+The functionality of the `new` keyword when used with a constructor function natively sets up this prototype chain for us and gives us a view into how to achieve inheritance in JavaScript. The characteristic of interest of the `new` keyword is it’s setting of the .\_\_proto\_\_ property. When using the `new` keyword, *the new object being created’s .\_\_proto\_\_ property is set to point to the .prototype property of it’s constructor function*. This allows the prototype chain to do its work as stated above.
+
+```
+- new Keyword -
+
+function Banana(origin, ageInWeeks) {
+	this.origin = origin;
+	this.age = ageInWeeks;
+}
+
+Banana.prototype.getColor = function getColor() {
+	if (age < 2)  return "green";
+	else if (age < 4) return "yellow";
+	else return "brown";
+}
+
+var b = new Banana("Costa Rica", 3);
+
+||||||||||||||||||||||||||||||||||||||||||||||||||
+
+b === {
+	"origin": "Costa Rica",
+	"age": 3,
+	"__proto__": -------------------
+}									|
+									v
+
+Banana.prototype  ===  	{	
+							"getColor": getColor,
+							"constructor": Banana,
+							"__proto__": -------------------
+						}									|
+															v
+													Object.prototype
+
+```
+
+
 
 ##Achieving Inheritance
 
