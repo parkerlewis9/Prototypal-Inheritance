@@ -97,6 +97,8 @@ var tinkering = {
 
 var emptyButPlumbed = Object.create(tinkering);
 
+||||||||||||||||||||||||||||||||||||||||||||||||||
+
 emptyButPlumbed === {
 
 	"__proto__": -------------------

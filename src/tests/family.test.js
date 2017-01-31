@@ -94,7 +94,6 @@ describe("Prototypal Inheritance", function(){
 
 		});
 
-
 	});
 
 	describe("Proof that the prototype chain is established", function(){

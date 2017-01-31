@@ -10,11 +10,11 @@ function ParentClass(nameOfClass, name, age) {
 
 ParentClass.prototype.sayHi = function() {
 	return "Hi, I'm " + this.name + " and I am " + this.age + pluralizeYear(this.age) + ".";
-}
+};
 
 ParentClass.prototype.sayBye = function() {
 	return "Bye for now!";
-}
+};
 
 
 function ChildClass(nameOfClass, name, age, skills) {
