@@ -8,7 +8,7 @@ Different programming languages implement inheritance in different ways. JavaScr
 
 While until recently JavaScript hadn’t the notion of a “class”, we will use the term class when referring to JavaScript’s constructor function pattern. That is, the creation of instances through use of the `new` keyword and constructor functions. 
 
-##The Prototype Chain
+## The Prototype Chain
 
 The prototype chain is characterized by the behavior JavaScript exhibits when searching for properties on objects. 
 
@@ -43,7 +43,7 @@ Object.prototype  ===  	{
 ```
 
 
-##The `new` Keyword
+## The `new` Keyword
 
 The functionality of the `new` keyword when used with a constructor function natively sets up this prototype chain for us and gives us a view into how to achieve inheritance in JavaScript. The characteristic of interest of the `new` keyword is it’s setting of the .\_\_proto\_\_ property. When using the `new` keyword, *the new object being created’s .\_\_proto\_\_ property is set to point to the .prototype property of it’s constructor function*. This allows the prototype chain to do its work as stated above.
 
@@ -82,7 +82,7 @@ Banana.prototype  ===  	{
 
 ```
 
-##Object.create
+## Object.create
 
 JavaScript comes with a way to allow us to do prototype plumbing relatively easily. By prototype plumbing we mean repointing of the .\_\_proto\_\_ property. Object.create will create an empty object *whose .\_\_proto\_\_ property will point to the whatever object is passed to it*. Said another way, Object.create allows us to set up the prototype chain of an object.
 
@@ -116,7 +116,7 @@ emptyButPlumbed === {
 ```
 
 
-##Achieving Inheritance
+## Achieving Inheritance
 
 JavaScript natively implements inheritance in its objects through use of the `new` keyword and the prototype chain. We can achieve inheritance from our own classes by inserting other prototypes into the prototype chain of our objects.
 
@@ -128,7 +128,7 @@ Study the code in [/src][1]. The file [/src/classes/family.js][2] shows the code
 
 ***
 
-###Sources
+### Sources
 
 [Inheritance and the prototype chain - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 
