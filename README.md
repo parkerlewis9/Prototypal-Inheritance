@@ -116,7 +116,7 @@ emptyButPlumbed === {
 ```
 
 
-## Achieving Inheritance
+## Inheritance
 
 JavaScript natively implements inheritance in its objects through use of the `new` keyword and the prototype chain. We can achieve inheritance from our own classes by inserting other prototypes into the prototype chain of our objects.
 
