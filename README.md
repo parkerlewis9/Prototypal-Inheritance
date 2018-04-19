@@ -122,13 +122,13 @@ JavaScript natively implements inheritance in its objects through use of the `ne
 
 All we have to do is use Object.create to make us a new empty object with its .\_\_proto\_\_ property pointing to the prototype of the parent class we want to inherit from. Then we set the child class' .prototype property equal this new object. The `new` keyword will take care of the rest of the plumbing. And the prototype chain will ensure that properties properly search all inherited class' prototypes.
 
-Study the code in [/src][1]. The file [/src/classes/family.js][2] shows the code for implementing complete inheritance. The tests in [/src/tests/family.test.js][3] prove that the code implements inheritance.
+Study the code in [/src/classes/family.js][2]. It shows the code needed for implementing complete inheritance. The tests in [/src/tests/family.test.js][3] prove that the code implements inheritance.
 
 >As you will see, we also reset the .constructor property of that new prototype and use the `.call`  function. Neither will be discussed here. Suffice to say, they allow objects to more fully inherit. But, the inheritance we have achieved is enough of a load to discuss for now and that will be for another time.
 
 ## Exercises
 
-Provided in the `/src` folder are exercises to practice implementing prototypal inheritance. Tests are provided for two of the classes created and the last class and its tests are left as an exercise for you to create. Be sure to run `npm install` from this directory to load the dependencies. Then run `npm test` to run the tests.
+Provided in the [/src][1] folder are exercises to practice implementing prototypal inheritance. Tests are provided for two of the classes created but the last class and its tests are left as an exercise for you to create. Be sure to run `npm install` from this directory to load the dependencies. Then run `npm test` to run the tests.
 
 ***
 
