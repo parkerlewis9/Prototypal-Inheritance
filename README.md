@@ -33,9 +33,9 @@ var obj = {
 
 Object.prototype  ===  	{	
 							"constructor": Object,
-							"hasOwnProperty": hasOwnProperty,
+							"hasOwnProperty": hasOwnProperty [Function],
 							...
-							"toString": toString,
+							"toString": toString [Function],
 							"__proto__": null
 						}
 				
@@ -72,13 +72,13 @@ b === {
 };									|
 									v
 
-Banana.prototype  ===  	{	
-							"getColor": getColor,
-							"constructor": Banana,
+Banana.prototype 	    ===	  		{	
+							"getColor": getColor [Function],
+							"constructor": Banana [Function],
 							"__proto__": -------------------
-						}									|
-															v
-													Object.prototype
+						}					|
+											v
+										Object.prototype
 
 ```
 
@@ -105,13 +105,13 @@ emptyButPlumbed === {
 };									|
 									v
 
-	tinkering  ===  	{	
+tinkering                 ===  			{	
 							"soldier": "spy",
 							"tinker": "tailor",
 							"__proto__": -------------------
-						}									|
-															v
-													Object.prototype
+						}					|
+											v
+										Object.prototype
 
 ```
 
@@ -125,6 +125,10 @@ All we have to do is use Object.create to make us a new empty object with its .\
 Study the code in [/src][1]. The file [/src/classes/family.js][2] shows the code for implementing complete inheritance. The tests in [/src/tests/family.test.js][3] prove that the code implements inheritance.
 
 >As you will see, we also reset the .constructor property of that new prototype and use the `.call`  function. Neither will be discussed here. Suffice to say, they allow objects to more fully inherit. But, the inheritance we have achieved is enough of a load to discuss for now and that will be for another time.
+
+## Exercises
+
+Provided in the `/src` folder are exercises to practice implementing prototypal inheritance. Tests are provided for two of the classes created and the last class and its tests are left as an exercise for you to create. Be sure to run `npm install` from this directory to load the dependencies. Then run `npm test` to run the tests.
 
 ***
 
