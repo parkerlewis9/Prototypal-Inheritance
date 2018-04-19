@@ -14,9 +14,9 @@ The prototype chain is characterized by the behavior JavaScript exhibits when se
 
 When searching for the property “foo” on an object __obj__, JavaScript first looks at all the properties on the object itself. If “foo” cannot be found, it will then look for “foo” on the memory reference found in the .\_\_proto\_\_ property of __obj__. 
 
-That memory reference, known as an object’s prototype, will natively point to JavaScript’s __Object.prototype__ object. Javascript will then look on __Object.prototype__ for the property “foo”. Not finding that to be a property of __Object.prototype__, JavaScript will traverse down the prototype chain again by looking to the prototype of __Object.prototype__. (that being the object to which it’s .\_\_proto\_\_ property points). The native behavior of JavaScript is such that __Object.prototype__’s .\_\_proto\_\_ property points to `null`. 
+That memory reference, known as an object’s prototype, will natively point to JavaScript’s __Object.prototype__ object. Javascript will then look on __Object.prototype__ for the property “foo”. Not finding that to be a property of __Object.prototype__, JavaScript will traverse down the prototype chain again by looking to the prototype of __Object.prototype__. (that being the object to which its .\_\_proto\_\_ property points). The native behavior of JavaScript is such that __Object.prototype__’s .\_\_proto\_\_ property points to `null`. 
 
-When trying to traverse down the chain, if JavaScript finds `null` it knows the property is nowhere to be found on the original object __obj__, nor any of the objects in it’s prototype chain. `undefined` is then returned. 
+When trying to traverse down the chain, if JavaScript finds `null` it knows the property is nowhere to be found on the original object __obj__, nor any of the objects in its prototype chain. `undefined` is then returned. 
 
 
 ```
@@ -45,7 +45,7 @@ Object.prototype  ===  	{
 
 ## The `new` Keyword
 
-The functionality of the `new` keyword when used with a constructor function natively sets up this prototype chain for us and gives us a view into how to achieve inheritance in JavaScript. The characteristic of interest of the `new` keyword is it’s setting of the .\_\_proto\_\_ property. When using the `new` keyword, *the new object being created’s .\_\_proto\_\_ property is set to point to the .prototype property of it’s constructor function*. This allows the prototype chain to do its work as stated above.
+The functionality of the `new` keyword when used with a constructor function natively sets up this prototype chain for us and gives us a view into how to achieve inheritance in JavaScript. The characteristic of interest of the `new` keyword is its setting of the .\_\_proto\_\_ property. When using the `new` keyword, *the new object being created’s .\_\_proto\_\_ property is set to point to the .prototype property of its constructor function*. This allows the prototype chain to do its work as stated above.
 
 ```
 - new Keyword -
