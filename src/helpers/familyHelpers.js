@@ -13,7 +13,7 @@ function stringifySkills(interests) {
 		}
 		skillsString = skillsString.slice(0, skillsString.length - 2);
 
-		return skillsString + " and " + interests[p] + "."
+		return skillsString + " and " + interests[interests.length - 1] + "."
 	}
 }
 
