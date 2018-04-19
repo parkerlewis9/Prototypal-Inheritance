@@ -8,12 +8,12 @@ function stringifySkills(interests) {
 	if(interests.length === 0) return "I have no interests."
 	else if (interests.length === 1) return skillsString + this.interests[0] + "."
 	else {
-		for(var i = 0; i < interests.length - 1; i++) {
-			skillsString += interests[i] + ", ";
+		for(let p = 0; p < interests.length - 1; p++) {
+			skillsString += interests[p] + ", ";
 		}
 		skillsString = skillsString.slice(0, skillsString.length - 2);
 
-		return skillsString + " and " + interests[i] + "."
+		return skillsString + " and " + interests[p] + "."
 	}
 }
 
